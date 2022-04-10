@@ -1,0 +1,108 @@
+@font-face {
+    font-family: 'scd2';
+    src: url(/style/S-Core_Dream_OTF/SCDream2.otf);
+}
+
+@font-face {
+    font-family: 'scd3';
+    src: url(/style/S-Core_Dream_OTF/SCDream3.otf);
+}
+
+@font-face {
+    font-family: 'scd5';
+    src: url(/style/S-Core_Dream_OTF/SCDream5.otf);
+}
+
+.button{
+    font-family: 'scd2';
+    text-align: left;
+    margin: 10px;
+}
+
+.hello{
+    font-family: 'scd5';
+    text-align: center;
+    margin: 10px;
+    padding: 20px;
+    border: 2px groove gray;
+    box-shadow: 0 0 30px 0 rgba(0,0,0,0.3);
+}
+
+#welcome{
+    font-family: 'scd2';
+    color:rgb(133, 132, 132)
+}
+
+.main1{
+    border: 2px groove gray;
+    box-shadow: 0 0 30px 0 rgba(0,0,0,0.3);
+    margin: 10px;
+    padding: 20px;
+    height: 515px;
+    width: 45%;
+    float: left;
+}
+
+
+#profile{
+    font-family: 'scd3';
+    margin: 20px;
+    margin-bottom: 40px;
+}
+
+#personal{
+    font-family: 'scd3';
+    padding-top: 40px;
+    font-size: 17px;
+    line-height: 35px;
+}
+
+.main2{
+    border: 2px groove gray;
+    box-shadow: 0 0 30px 0 rgba(0,0,0,0.3);
+    margin: 10px;
+    padding: 20px;
+    height: 515px;
+    width: 45%;
+    float: right;
+}
+
+#activity{
+    font-family: 'scd3';
+    margin: 20px;
+    margin-bottom: 0px;
+}
+
+#content{
+    font-family: 'scd2';
+    line-height: 35px;
+    font-size: 15px;
+    margin-left: 0px;
+    margin-top: 0px;
+}
+
+#image1{
+    height: 370px;
+    margin: 20px;
+    margin-right: 0px;
+    float: left;
+}
+
+#content{
+    font-family: 'scd2';
+    line-height: 35px;
+    font-size: 15px;
+    padding: 40px;
+}
+
+footer{
+    text-align: right;
+    border: 2px groove gray;
+    background-color: rgb(49, 49, 49);
+    font-size: 12px;
+    color: white;
+    padding: 10px;
+    margin: 10px;
+    margin-top: 600px;
+    height: 120px;
+}
