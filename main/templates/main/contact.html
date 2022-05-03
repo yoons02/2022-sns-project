@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% include 'shared/_botton.html' %}
+{% load static %}
 
 {% block content %}
         <div class="hello">
@@ -9,7 +9,7 @@
         </div>
         <div class="main1">
             <h3 id="profile">Profile</h3>
-            <img src="style/상반신.jpg" id="image1">
+            <img src="{% static 'style/상반신.jpg' %}" id="image1">
             <pre id="personal">
         Personal information
         - Birth : 2002.03.31

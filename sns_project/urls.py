@@ -24,5 +24,5 @@ urlpatterns = [
     path('', views.showmain, name="showmain"),
 
     #contactpage url
-    path('contact', views.showcontact, name="showcontact"),
+    path('contact/', views.showcontact, name="showcontact"),
 ]
