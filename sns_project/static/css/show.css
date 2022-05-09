@@ -1,16 +1,16 @@
 @font-face {
     font-family: 'scd2';
-    src: url("/static/S-Core_Dream_OTF/SCDream2.otf");
+    src: url("../font/SCDream2.otf");
 }
 
 @font-face {
     font-family: 'scd3';
-    src: url("/static/S-Core_Dream_OTF/SCDream3.otf");
+    src: url("../font/SCDream3.otf");
 }
 
 @font-face {
     font-family: 'scd5';
-    src: url("/static/S-Core_Dream_OTF/SCDream5.otf");
+    src: url("../font/SCDream5.otf");
 }
 
 .button{

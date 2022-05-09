@@ -6,6 +6,21 @@
         <div class="hello">
             <h1>Yoons Webpage</h1>
             <p id="welcome">Welcome to Yoons Webpage</p>
+
+            <h2><a href="{% url 'new' %}">글쓰기</a></h2>
+        <h1>글 목록</h1>
+
+        <div>
+            {% for post in posts %}
+            <div>
+                <h3>{{post.title}}</h3>
+                {{post.writer}}<br>
+                {{post.summary}}
+                <a href="{% url 'detail' post.id %}">...자세히</a>
+                <br>
+            </div>
+            {% endfor %}
+        </div>
         </div>
         <div class="main1">
             <h3 id="profile">Profile</h3>
@@ -21,7 +36,9 @@
         Computer Science Engineering
             </pre>
         </div>
-    
+        
+        
+        
         <div class="main2">
             <h3 id="activity">Activity</h3>
             <pre id="content">
