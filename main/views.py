@@ -6,8 +6,8 @@ from django.utils import timezone
 
 # mainpage
 def showmain(request):
-    Posts = Post.objects.all()
-    return render(request, 'main/show.html',{'Posts':Posts})
+    posts = Post.objects.all()
+    return render(request, 'main/show.html',{'posts':posts})
 
 
 # contactpage
