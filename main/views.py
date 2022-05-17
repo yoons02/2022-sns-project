@@ -9,7 +9,6 @@ def showmain(request):
     posts = Post.objects.all()
     return render(request, 'main/show.html',{'posts':posts})
 
-
 # contactpage
 def showcontact(request):
     return render(request, 'main/contact.html')
@@ -17,6 +16,10 @@ def showcontact(request):
 def detail(request, id):
     post = get_object_or_404(Post, pk = id)
     return render(request, 'main/detail.html', {'post':post})
+
+def posts(request):
+    posts = Post.objects.all()
+    return render(request, 'main/posts.html', {'posts':posts})
 
 def new(request):
     return render(request, 'main/new.html')
@@ -32,8 +35,8 @@ def create(request):
     return redirect('detail',new_post.id)
     
 def edit(request, id):
-    edit_post = Blog.objects.get(id = id)
-    return render(request, 'main/edit.html', {'blog' : edit_blog})
+    edit_post = Post.objects.get(id = id)
+    return render(request, 'main/edit.html', {'blog' : edit_post})
 
 def update(request, id):
     update_post = Post.objects.get(id=id)
