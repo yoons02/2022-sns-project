@@ -3,6 +3,17 @@
 {% load static %}
 
 {% block content %}
+{% if user.is_authenticated %}
+    <br>
+    <h1>글 목록</h1><br>
+    ...
+    {% else %}
+
+    <a href="{% url 'account_login' %}" class="btn btn-warning">로그인</a>
+    <a href="{% url 'account_signup' %}" class="btn btn-warning">회원가입</a>
+
+    {% endif %}
+    
         <div class="hello">
             <h1>Yoons Webpage</h1>
             <p id="welcome">Welcome to Yoons Webpage</p>
