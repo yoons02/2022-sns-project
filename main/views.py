@@ -15,7 +15,8 @@ def showcontact(request):
 
 def detail(request, id):
     post = get_object_or_404(Post, pk = id)
-    return render(request, 'main/detail.html', {'post':post})
+    all_comments = post.comments.all().order_by('-created_at')
+    return render(request, 'main/detail.html', {'post':post, 'comments':all_comments})
 
 def new(request):
     return render(request, 'main/new.html')
@@ -48,7 +49,6 @@ def delete(request, id):
     delete_post.delete()
     return redirect('main:showmain')
     
-
 def create_comment(request, post_id):
     new_comment = Comment()
     new_comment.writer = request.user
