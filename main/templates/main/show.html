@@ -4,9 +4,7 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-    <br>
-    <h1>글 목록</h1><br>
-    ...
+    
     {% else %}
 
     <a href="{% url 'account_login' %}" class="btn btn-warning">로그인</a>
@@ -18,15 +16,15 @@
             <h1>Yoons Webpage</h1>
             <p id="welcome">Welcome to Yoons Webpage</p>
 
-            <h2><a href="{% url 'main:new' %}">글쓰기</a></h2>
-        <h1>글 목록</h1>
+            <h4><a href="{% url 'main:new' %}">글쓰기</a></h4>
 
         <div>
+            <h3>글 목록</h3>
             {% for post in posts %}
             <div>
                 <h3>{{post.title}}</h3>
-                {{post.writer}}<br>
-                {{post.summary}}
+                작성자 : {{post.writer.last_name}}{{post.writer.first_name}}<br>
+                내용 : {{post.summary}}
                 <a href="{% url 'main:detail' post.id %}">...자세히</a>
                 <br>
             </div>
