@@ -57,7 +57,7 @@ def create_comment(request, post_id):
     new_comment.save() 
     return redirect('main:detail', post_id)
 
-# def delete_comment(requests, post_id, pk):
-#     del_comment = get_object_or_404(Comment, id=comment_id)
-#     del_comment.delete()
-#     return redirect('main:showmain')
+def delete_comment(request, id):
+    del_comment = Comment.objects.get(id=id)
+    del_comment.delete()
+    return redirect('main:detail')

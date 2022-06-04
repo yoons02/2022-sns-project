@@ -38,7 +38,8 @@
             작성자 : {{comment.writer.last_name}}{{comment.writer.first_name}}
             {% else %}
             작성자: {{comment.writer}}
-            {% endif %}         {{comment.content}}
+            {% endif %}     <br>    {{comment.content}}
+            <a href="{% url 'main:delete_comment' post.id %}"><br>댓글 삭제</a>
         <br><hr>
     </div>
     {% endfor %}
@@ -48,6 +49,6 @@
 <a href="{% url 'main:delete' post.id %}">삭제하기</a>
 <br><br>
 <hr>
-<h5><a href="{% url 'main:detail' post.id %}">목록</a></h5>
+<h5><a href="{% url 'main:showmain' %}">목록</a></h5>
 {% endblock %}
 
