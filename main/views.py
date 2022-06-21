@@ -57,12 +57,18 @@ def create_comment(request, post_id):
     new_comment.save() 
     return redirect('main:detail', post_id)
 
-def delete_comment(request, id):
-    del_comment = get_object_or_404(Comment, pk = id)
+def edit_comment(request,comment_id):
+    edit_comment = Comment.objects.get(id = comment_id)
+    return render(request,'edit_com.html',{'comment':edit_comment})
+
+def update_comment(request,comment_id):
+    update_comment = get_object_or_404(Comment, pk = comment_id)
+    update_comment.writer = request.user
+    update_comment.content = request.POST['content']
+    update_comment.save()
+    return redirect('main:detail',update_comment.post.id)
+
+def delete_comment(request, comment_id):
+    del_comment = get_object_or_404(Comment, pk = comment_id)
     del_comment.delete()
     return redirect('main:detail',del_comment.post.id)
-
-def edit_comment(request, id):
-    ed_comment = get_object_or_404(Comment, pk = id)
-    ed_comment.save()
-    return render(request, 'main/edit_com.html', {'comments' : ed_comment})
