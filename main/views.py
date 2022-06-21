@@ -59,7 +59,7 @@ def create_comment(request, post_id):
 
 def edit_comment(request,comment_id):
     edit_comment = Comment.objects.get(id = comment_id)
-    return render(request,'edit_com.html',{'comment':edit_comment})
+    return render(request,'main/edit_com.html',{'comment':edit_comment})
 
 def update_comment(request,comment_id):
     update_comment = get_object_or_404(Comment, pk = comment_id)
