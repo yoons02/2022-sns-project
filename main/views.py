@@ -64,8 +64,5 @@ def delete_comment(request, id):
 
 def edit_comment(request, id):
     ed_comment = get_object_or_404(Comment, pk = id)
-    # up_comment.writer = request.user
-    # up_comment.content = request.POST['content']
-    # up_comment.pub_date = timezone.now()
-    # up_comment.save()
-    return redirect('main:detail',ed_comment.id)
+    ed_comment.save()
+    return render(request, 'main/edit_com.html', {'comments' : ed_comment})
