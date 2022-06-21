@@ -58,6 +58,14 @@ def create_comment(request, post_id):
     return redirect('main:detail', post_id)
 
 def delete_comment(request, id):
-    del_comment = Comment.objects.get(id=id)
+    del_comment = get_object_or_404(Comment, pk = id)
     del_comment.delete()
-    return redirect('main:detail')
+    return redirect('main:detail',del_comment.post.id)
+
+def edit_comment(request, id):
+    ed_comment = get_object_or_404(Comment, pk = id)
+    # up_comment.writer = request.user
+    # up_comment.content = request.POST['content']
+    # up_comment.pub_date = timezone.now()
+    # up_comment.save()
+    return redirect('main:detail',ed_comment.id)
