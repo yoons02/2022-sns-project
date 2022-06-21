@@ -39,7 +39,7 @@
             {% else %}
             작성자: {{comment.writer}}
             {% endif %}     <br>    {{comment.content}}
-            <a href="{% url 'main:update_comment' comment.id %}"><br>댓글 수정</a>
+            <a href="{% url 'main:edit_comment' comment.id %}"><br>댓글 수정</a>
             <a href="{% url 'main:delete_comment' comment.id %}"><br>댓글 삭제</a>
         <br><hr>
     </div>
