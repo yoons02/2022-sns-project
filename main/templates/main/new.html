@@ -8,24 +8,25 @@
 <div class="hello">
     <h3>글 쓰기</h3>
 </div>
+<div style="align-items: center; text-align: center;">
+    <form action="{% url 'main:create' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text" name="title" id="title" style="font-family: 'scd2'; font-size:14pt;" placeholder="제목을 입력하세요" >
+            <!-- <p><input type="file" id="image"></p> -->
+            <div class="filebox">
+                <input class="upload-name" value="파일선택" disabled="disabled" style="font-family: 'scd2'; font-size:14pt;">
 
-<form action="{% url 'main:create' %}" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    <input type="text" name="title" id="title" style="font-family: 'scd2'; font-size:14pt;" placeholder="제목을 입력하세요" >
-        <!-- <p><input type="file" id="image"></p> -->
-        <div class="filebox">
-            <input class="upload-name" value="파일선택" disabled="disabled" style="font-family: 'scd2'; font-size:14pt;">
-
-            <label for="ex_filename">업로드</label> 
-            <input type="file" name="image" id="ex_filename" class="upload-hidden"> 
-        </div>
-        <p><textarea name="body" class='autoExpand' rows='3' data-min-rows='3' placeholder='내용을 입력하세요' style="font-family: 'scd2'; font-size:14pt;" autofocus></textarea></p>
-        
-        <!-- <div class="submit_botton"><button type = "submit">제출</button></div> -->
-        <div class="submit_button">			
-            <button type="submit" style="border: none;"><a class="btn btn-orange" style="font-family: 'scd2'; font-size:14pt;">게시글 작성</a></button>		
-        </div>
-    </form>
-</section>
-<script src="{% static 'new.js' %}" defer="defer"></script>
+                <label for="ex_filename">업로드</label> 
+                <input type="file" name="image" id="ex_filename" class="upload-hidden"> 
+            </div>
+            <p><textarea name="body" class='autoExpand' rows='3' data-min-rows='3' placeholder='내용을 입력하세요' style="font-family: 'scd2'; font-size:14pt; margin-left: 27.5%;" autofocus></textarea></p>
+            
+            <!-- <div class="submit_botton"><button type = "submit">제출</button></div> -->
+            <div class="submit_button">			
+                <button type="submit" style="border: none;"><a class="btn btn-orange" style="font-family: 'scd2'; font-size:14pt;">게시글 작성</a></button>		
+            </div>
+        </form>
+    </section>
+    <script src="{% static 'new.js' %}" defer="defer"></script>
+</div>
 {% endblock %}

@@ -10,14 +10,11 @@ def mypage(request):
     like_list = Like.objects.filter(user = user)
     dislike_list = Dislike.objects.filter(user = user)
 
-    context = {
+    context= {
         'like_list' : like_list,
-        'posts':posts,
-    }
-
-    context = {
         'dislike_list' : dislike_list,
         'posts':posts,
     }
+
     return render(request,'users/mypage.html',context)
 
