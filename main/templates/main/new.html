@@ -1,15 +1,31 @@
 {% extends 'base.html' %}
 
 {% load static %}
-
+{% block style&js %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/show.css' %}">
+{% endblock %}
 {% block content %}
+<div class="hello">
+    <h3>글 쓰기</h3>
+</div>
 
 <form action="{% url 'main:create' %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    <p>제목 : <input type="text" name="title"></p>
-    <p>사진 : <input type="file" name="image"></p>
-    <p>내용 : <textarea type="text" name="body" id="" cols="30" rows="10"></textarea></p>
-    <button type="submit">제출</button>
-</form>
+    <input type="text" name="title" id="title" style="font-size:14pt" placeholder="제목을 입력하세요" >
+        <!-- <p><input type="file" id="image"></p> -->
+        <div class="filebox">
+            <input class="upload-name" value="파일선택" disabled="disabled">
 
+            <label for="ex_filename">업로드</label> 
+            <input type="file" name="image" id="ex_filename" class="upload-hidden"> 
+        </div>
+        <p><textarea name="body" class='autoExpand' rows='3' data-min-rows='3' placeholder='내용을 입력하세요' style="font-size:14pt" autofocus></textarea></p>
+        
+        <!-- <div class="submit_botton"><button type = "submit">제출</button></div> -->
+        <div class="submit_button">			
+            <button type="submit" style="border: none;"><a class="btn btn-orange">게시글 작성</a></button>		
+        </div>
+    </form>
+</section>
+<script src="{% static 'new.js' %}" defer="defer"></script>
 {% endblock %}

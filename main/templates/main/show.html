@@ -3,37 +3,14 @@
 {% load static %}
 
 {% block content %}
-{% if user.is_authenticated %}
-    
-    {% else %}
 
-    <a href="{% url 'account_login' %}" class="btn btn-warning">로그인</a>
-    <a href="{% url 'account_signup' %}" class="btn btn-warning">회원가입</a>
-
-    {% endif %}
-    
         <div class="hello">
             <h1>Yoons Webpage</h1>
             <p id="welcome">Welcome to Yoons Webpage</p>
-
-            <h4><a href="{% url 'main:new' %}">글쓰기</a></h4>
-
-        <div>
-            <h3>글 목록</h3>
-            {% for post in posts %}
-            <div>
-                <h3>{{post.title}}</h3>
-                작성자 : {{post.writer.last_name}}{{post.writer.first_name}}<br>
-                내용 : {{post.summary}}
-                <a href="{% url 'main:detail' post.id %}">...자세히</a>
-                <br>
-            </div>
-            {% endfor %}
-        </div>
         </div>
         <div class="main1">
             <h3 id="profile">Profile</h3>
-            <img src="{% static 'image/상반신.jpg' %}" id="image1">
+            <img src="{% static 'image/상반신_remove.png' %}" id="image1">
             <pre id="personal">
         Personal information
         - Birth : 2002.03.31

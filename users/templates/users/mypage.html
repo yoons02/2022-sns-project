@@ -2,15 +2,81 @@
 {% load static %}
 {% block content %}
 
+<div class="hello">
+    <h3>My page</h3></div>
 <div class="container">
-    <h1>{{user.last_name}}{{user.first_name}}</h1>
-    <div>
-        {% for post in posts %}
+    <h3 style="font-family:'scd3';">{{user.last_name}}{{user.first_name}} 님이 작성한 게시글</h3>
+        <div class="container">
+            <div class="row">
+                {% for post in posts %}
+                    <div class="col-md-3 col-6 item_list__card">
+                        <div class="card" style="font-family: 'scd3';">
+                                <div class="card-body" style="font-size:15px">
+                                    <h5 class="card-title">{{ post.title }}</h5>
+                                    작성자 : {{post.writer.last_name}}{{post.writer.first_name}}<br>
+                                    내용 : {{post.summary}}
+                                    <a href="{% url 'main:detail' post.id %}">...자세히</a><br>
+                                    {{post.pub_date}}
+                                    <br>
+                                </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+</div><hr>
 
-        <a href="{% url 'main:detail' post.id %}">{{post.title}}</a><hr>
+<!-- 좋아요 목록 -->
+    <div class="container">
+        <p style="font-weight:bold; font-family:'scd3';">🐳 내 좋아요 목록 🐳</p>
+        <div class="row">
+            {% for like in like_list %}
+                <div class="col-md-3 col-6 item_list__card">
+                    <div class="card">
+                        {% if like.post.image %}
+                            <a href="#">
+                                <img src="{{ like.post.image.url }}" width="100%" height="300px" alt="...">
+                            </a>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ like.post.title }}</h5>
+                                <a href="{% url 'items:show' like.post.pk %}" class="btn btn-outline-primary">보러가기</a>
+                               </div>
+                        {% else %}
+                            <div class="card-body">
+                                <h5 class="card-title">{{ like.post.title }}</h5>
+                                <a href="{% url 'items:show' like.post.pk %}" class="btn btn-outline-primary">보러가기</a>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div><hr>
 
+<!-- 싫어요 목록 -->
+<div class="container">
+    <p style="font-weight:bold; font-family:'scd3';">🐳 내 싫어요 목록 🐳</p>
+    <div class="row">
+        {% for dislike in dislike_list %}
+            <div class="col-md-3 col-6 item_list__card">
+                <div class="card">
+                    {% if dislike.post.image %}
+                        <a href="#">
+                            <img src="{{ dislike.post.image.url }}" width="100%" height="300px" alt="...">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ dislike.post.title }}</h5>
+                            <a href="{% url 'items:show' dislike.post.pk %}" class="btn btn-outline-primary">보러가기</a>
+                           </div>
+                    {% else %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ dislike.post.title }}</h5>
+                            <a href="{% url 'items:show' dislike.post.pk %}" class="btn btn-outline-primary">보러가기</a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
         {% endfor %}
     </div>
-</div>
-
-{% endblock %}
+</div><hr>
+{% endblock content %}
