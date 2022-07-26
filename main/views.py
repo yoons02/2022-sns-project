@@ -86,6 +86,12 @@ def delete_comment(request, comment_id):
     del_comment.delete()
     return redirect('main:detail',del_comment.post.id)
 
+def show(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
+    post.view_count = post.view_count+1
+    post.save()
+    return render(request, 'items/show.html', {'post':post})
+
 # 3. like_toggle 함수 작성하기
 @require_POST
 @login_required
@@ -111,7 +117,7 @@ def my_like(request, user_id):
     context = {
         'like_list' : like_list,
     }
-    return render(request, '../users/mypage.html', context)
+    return render(request, 'main/mypage.html', context)
 
 # 4. dislike_toggle 함수 작성하기
 @require_POST
@@ -138,4 +144,4 @@ def my_dislike(request, user_id):
     context = {
         'dislike_list' : dislike_list,
     }
-    return render(request, '../users/mypage.html', context)
+    return render(request, 'main/mypage.html', context)

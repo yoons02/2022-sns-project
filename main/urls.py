@@ -8,6 +8,7 @@ urlpatterns = [
     path('', showcontact, name="showcontact"),
     path('<int:id>', detail, name="detail"),
     path('new/', new, name="new"),
+    path('show/<int:post_id>/', views.show, name="show"),
     path('list/', list, name="list"),
     path('create/', create, name="create"),
     path('edit/<int:id>', edit, name="edit"),

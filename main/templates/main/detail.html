@@ -30,6 +30,7 @@
         <input type="submit" style="font-family: 'scd2'; font-size: 19px;"  value="확인">
         <a href="{% url 'main:edit' post.id %}" style="font-family: 'scd3'; font-size: 15px; text-decoration: none;" >수정하기</a>
         <a href="{% url 'main:delete' post.id %}" style="font-family: 'scd3'; font-size: 15px;text-decoration: none;">| 삭제하기</a>
+        
         <!-- 4. 좋아요 버튼 노출-->
 
     <span href="#" class="like" name ="{{post.id}}" value="Like">
@@ -83,7 +84,7 @@
         var pk=$(this).attr('name')
         $.ajax({
             type:'POST',
-            url:"{% url 'items:like_toggle' post.pk %}",
+            url:"{% url 'main:like_toggle' post.pk %}",
             data:{'pk':pk,'csrfmiddlewaretoken':'{{csrf_token}}'},
             dataType:'json',
             success:function(response){
@@ -118,7 +119,7 @@
         var pk=$(this).attr('name')
         $.ajax({
             type:'POST',
-            url:"{% url 'items:dislike_toggle' post.pk %}",
+            url:"{% url 'main:dislike_toggle' post.pk %}",
             data:{'pk':pk,'csrfmiddlewaretoken':'{{csrf_token}}'},
             dataType:'json',
             success:function(response){
