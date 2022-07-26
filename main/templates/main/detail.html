@@ -27,7 +27,7 @@
     <form action="{%url 'main:create_comment' post.id%}" method="POST">
         {%csrf_token%}
         <textarea name="content" style="font-family: 'scd3'; font-size: 19px;" placeholder="댓글내용입력"></textarea>
-        <input type="submit" style="font-family: 'scd2'; font-size: 19px;"  value="확인">
+        <input type="submit" style="font-family: 'scd2'; font-size: 19px; margin: 20px;"  value="확인">
         <a href="{% url 'main:edit' post.id %}" style="font-family: 'scd3'; font-size: 15px; text-decoration: none;" >수정하기</a>
         <a href="{% url 'main:delete' post.id %}" style="font-family: 'scd3'; font-size: 15px;text-decoration: none;">| 삭제하기</a>
         

@@ -136,3 +136,11 @@ footer{
 .btn.btn-orange{background-color: #f59e00; border-color: #f59e00; -webkit-box-shadow: 0 3px 0 #b37401; box-shadow: 0 3px 0 #b37401;}
 .btn.btn-orange:hover{background-color:#dd9003;}
 .btn.btn-orange:active{top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
+
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
