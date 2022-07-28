@@ -3,17 +3,55 @@
 {% block content %}
 
 <div class="hello">
-    <h3>My page</h3></div>
+    <div class="container1" style="float:center;">
+    {% if post.writer %}
+        {% if 'user' in username %}
+            <h3 style="font-family: 'scd3'; font-size: 30px; align-items:center; ">{{ username.last_name }}{{ username.first_name }}</h3>
+        {% else %}
+            <h3 style="font-family: 'scd3'; font-size: 30px; float:center;">{{ user.username }}</h3>
+        {% endif %}
+    {% else %}
+        <h3 style="font-family: 'scd3'; font-size: 30px; float:center;">알 수 없음</h3>
+    {% endif %}
+    </div>
+    <div class="container2" style="font-family:'scd2'; font-size: 16px; float:right;">
+        <p>팔로워<br>{{ user.profile.follwers.count }}명</p>
+        {%for follower in user.profile.followers.all %}
+            <a href="{% url 'users:mypage' user.id %}">{{ follower.user.username }}</a>
+        {% endfor %}
+
+        <p>팔로잉<br>{{ user.profile.follwings.count }}명</p>
+        {% for following in user.profile.followings.all %}
+            <a href="{% url 'users:mypage' user.id %}">{{ following.user.username }}</a>
+        {% endfor %}
+
+        {% if request.user != user %}
+            {% if request.user.profile in user.profile.followers.all %}
+                <a href="{% url 'users:follow' user.id %}"><button type="button" class="btn btn-outline-info">언팔로우</button></a>
+            {% else %}
+                <a href="{% url 'users:follow' user.id %}"><button type="button" class="btn btn-info">팔로우</button></a>
+            {% endif %}
+        {% endif %}  
+    </div>
+</div>
+
 <div class="container">
-    <h3 style="font-family:'scd3';">{{user.last_name}}{{user.first_name}} 님이 작성한 게시글</h3>
-        <div class="container">
+    <p style="font-weight:bold; font-family:'scd3'; font-size: 20px;">작성한 게시글</p>
             <div class="row">
                 {% for post in posts %}
                     <div class="col-md-3 col-6 item_list__card">
                         <div class="card" style="font-family: 'scd3';">
                                 <div class="card-body" style="font-size:15px">
                                     <h5 class="card-title">{{ post.title }}</h5>
-                                    작성자 : {{post.writer.last_name}}{{post.writer.first_name}}<br>
+                                    {% if post.writer %}
+                                        {% if 'user' in post.writer.username %}
+                                            작성자 : {{ post.writer.last_name }}{{ post.writer.first_name }}<br>
+                                        {% else %}
+                                            작성자 : {{ post.writer }}<br>
+                                        {% endif %}
+                                    {% else %}
+                                        알 수 없음<br>
+                                    {% endif %}
                                     내용 : {{post.summary}}
                                     <a href="{% url 'main:detail' post.id %}">...자세히</a><br>
                                     {{post.pub_date}}
@@ -28,7 +66,7 @@
 
 <!-- 좋아요 목록 -->
     <div class="container">
-        <p style="font-weight:bold; font-family:'scd3';">🐳 내 좋아요 목록 🐳</p>
+        <p style="font-weight:bold; font-family:'scd3'; font-size: 20px;">🐳 내 좋아요 목록 🐳</p>
         <div class="row">
             {% for like in like_list %}
                 <div class="col-md-3 col-6 item_list__card">
@@ -57,7 +95,7 @@
 
 <!-- 싫어요 목록 -->
 <div class="container">
-    <p style="font-weight:bold; font-family:'scd3';">🐳 내 싫어요 목록 🐳</p>
+    <p style="font-weight:bold; font-family:'scd3';  font-size: 20px;">🐳 내 싫어요 목록 🐳</p>
     <div class="row">
         {% for dislike in dislike_list %}
             <div class="col-md-3 col-6 item_list__card">
