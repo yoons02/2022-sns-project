@@ -4,25 +4,21 @@
 
 <div class="hello">
     <div class="container1" style="float:center;">
-    {% if post.writer %}
-        {% if 'user' in username %}
-            <h3 style="font-family: 'scd3'; font-size: 30px; align-items:center; ">{{ username.last_name }}{{ username.first_name }}</h3>
-        {% else %}
-            <h3 style="font-family: 'scd3'; font-size: 30px; float:center;">{{ user.username }}</h3>
-        {% endif %}
+    {% if user %}
+        <h3 style="font-family: 'scd3'; font-size: 30px; float:center;">{{ user.username }}</h3>
     {% else %}
         <h3 style="font-family: 'scd3'; font-size: 30px; float:center;">알 수 없음</h3>
     {% endif %}
     </div>
     <div class="container2" style="font-family:'scd2'; font-size: 16px; float:right;">
-        <p>팔로워<br>{{ user.profile.follwers.count }}명</p>
+        <p>팔로워<br>{{user.profile.followers.count}}명</p>
         {%for follower in user.profile.followers.all %}
-            <a href="{% url 'users:mypage' user.id %}">{{ follower.user.username }}</a>
+            <a href="{% url 'users:mypage' follower.user.id %}">{{ follower.user.username }}</a>
         {% endfor %}
 
-        <p>팔로잉<br>{{ user.profile.follwings.count }}명</p>
+        <p>팔로잉<br>{{user.profile.followings.count}}명</p>
         {% for following in user.profile.followings.all %}
-            <a href="{% url 'users:mypage' user.id %}">{{ following.user.username }}</a>
+            <a href="{% url 'users:mypage' following.user.id %}">{{ following.user.username }}</a>
         {% endfor %}
 
         {% if request.user != user %}
